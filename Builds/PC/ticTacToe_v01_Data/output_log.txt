@@ -1,0 +1,55 @@
+Initialize engine version: 5.3.5f1 (960ebf59018a)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.088 seconds
+Platform assembly: D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Documents\SourceTreeProjects\GitHub\TicTacToe\Builds\PC\ticTacToe_v01_Data\Managed\System.dll (this message is harmless)
+desktop: 2560x1080 60Hz; virtual: 4480x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.355640 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.720715 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 225.
+Total: 0.130554 ms (FindLiveObjects: 0.013285 ms CreateObjectMapping: 0.005365 ms MarkObjects: 0.108582 ms  DeleteObjects: 0.002554 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.347719 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 225.
+Total: 0.127744 ms (FindLiveObjects: 0.010730 ms CreateObjectMapping: 0.005620 ms MarkObjects: 0.108582 ms  DeleteObjects: 0.002299 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.331113 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 225.
+Total: 0.113181 ms (FindLiveObjects: 0.007664 ms CreateObjectMapping: 0.005365 ms MarkObjects: 0.097852 ms  DeleteObjects: 0.002043 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.459368 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 225.
+Total: 0.116502 ms (FindLiveObjects: 0.010219 ms CreateObjectMapping: 0.006131 ms MarkObjects: 0.097596 ms  DeleteObjects: 0.002299 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 3d6c -> priority: 1 
+  Thread -> id: 17e8 -> priority: 1 

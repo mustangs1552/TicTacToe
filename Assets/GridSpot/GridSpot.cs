@@ -99,14 +99,18 @@ public class GridSpot : MonoBehaviour
     // Find out if user clicked on a GridSpot. If so then call the proper function depending on whose turn it is.
     void OnMouseUp()
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit.collider != null && hit.transform.gameObject.tag == "GridSpot")
+        if (state == State.None && !gameControllerScript.GameEnded)
         {
-            PrintDebugMsg("Hit a GridSPot.");
-            if (gameControllerScript.XTurn == true) XClaimed();
-            else OClaimed();
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null && hit.transform.gameObject == this.gameObject)
+            {
+                PrintDebugMsg("Hit a GridSPot.");
 
-            gameControllerScript.NextTurn();
+                if (gameControllerScript.XTurn == true) XClaimed();
+                else OClaimed();
+
+                gameControllerScript.NextTurn();
+            }
         }
     }
     #endregion

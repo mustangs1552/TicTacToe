@@ -22,6 +22,7 @@ public class UIController : MonoBehaviour
     #region Private
     private Text currTurnText = null;
     private Text winnerText = null;
+    private GameObject restartButton = null;
 
     private GameController gameControllerScript = null;
     #endregion
@@ -34,11 +35,30 @@ public class UIController : MonoBehaviour
 
     #region Public
     // Updates the text objects that the text objects need to display.
-    public void UpdateText(bool won = false)
+    public void UpdateText()
     {
         string turnStr = (gameControllerScript.XTurn) ? "X" : "O";
         currTurnText.text = turnStr + "'s turn.";
-        if (won) winnerText.text = turnStr + " won!";
+        if (gameControllerScript.GameEnded)
+        {
+            string winnerStr = (gameControllerScript.XTurn) ? "O" : "X";
+            winnerText.text = winnerStr + " won!";
+            winnerText.gameObject.SetActive(true);
+            restartButton.SetActive(true);
+        }
+        else
+        {
+            winnerText.gameObject.SetActive(false);
+            restartButton.SetActive(false);
+        }
+    }
+
+    // Show the end game text and restart button.
+    public void ShowLooseScreen()
+    {
+        winnerText.text = "Draw!";
+        winnerText.gameObject.SetActive(true);
+        restartButton.SetActive(true);
     }
     #endregion
 
@@ -51,10 +71,12 @@ public class UIController : MonoBehaviour
         {
             if (ui.gameObject.name == "CurrTurn") currTurnText = ui.GetComponent<Text>();
             else if (ui.gameObject.name == "Winner") winnerText = ui.GetComponent<Text>();
+            else if (ui.gameObject.name == "Restart") restartButton = ui;
         }
-
+        
         if (currTurnText == null) PrintErrorDebugMsg("No CurrTurn text object found!");
         if (winnerText == null) PrintErrorDebugMsg("No Winner text object found!");
+        if (restartButton == null) PrintErrorDebugMsg("No Restart button object found!");
     }
     #endregion
 
@@ -92,6 +114,10 @@ public class UIController : MonoBehaviour
     void Start()
     {
         gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
+
+        AssignUIObjects();
+        winnerText.gameObject.SetActive(false);
+        restartButton.SetActive(false);
     }
     // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
     void FixedUpdate()

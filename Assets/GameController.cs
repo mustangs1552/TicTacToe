@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class GameController : MonoBehaviour
     private bool xTurn = true;
     private List<GameObject> gridSpots = new List<GameObject>();
     private float gridSpotSpacing = 2;
+    private bool gameEnded = false;
+    private int turnNum = 0;
 
     private UIController uiControllerScript = null;
     #endregion
@@ -43,11 +46,24 @@ public class GameController : MonoBehaviour
 
         uiControllerScript.UpdateText();
         CheckWinConditions();
+
+        turnNum++;
+        if(turnNum >= 9)
+        {
+            gameEnded = true;
+            uiControllerScript.ShowLooseScreen();
+        }
+    }
+
+    // Reload the scene.
+    public void Restart()
+    {
+        SceneManager.LoadScene("sceneOne");
     }
     #endregion
 
     #region Private
-     // Sets up the grid of 9 spaces.
+    // Sets up the grid of 9 spaces.
     // Adds spots from left to right and top to bottom.
     private void SetUpGrid()
     {
@@ -162,7 +178,8 @@ public class GameController : MonoBehaviour
     {
         string winnerStr = (winner == State.X) ? "X" : "O";
         PrintDebugMsg(winnerStr + " won!");
-        uiControllerScript.UpdateText(true);
+        uiControllerScript.UpdateText();
+        gameEnded = true;
     }
     #endregion
 
@@ -187,6 +204,13 @@ public class GameController : MonoBehaviour
         get
         {
             return xTurn;
+        }
+    }
+    public bool GameEnded
+    {
+        get
+        {
+            return gameEnded;
         }
     }
     #endregion

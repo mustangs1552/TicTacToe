@@ -29,8 +29,6 @@ public class GridSpot : MonoBehaviour
     private State state = State.None;
     private GameObject xChild = null;
     private GameObject oChild = null;
-
-    private GameController gameControllerScript = null;
     #endregion
     #endregion
 
@@ -99,17 +97,17 @@ public class GridSpot : MonoBehaviour
     // Find out if user clicked on a GridSpot. If so then call the proper function depending on whose turn it is.
     void OnMouseUp()
     {
-        if (state == State.None && !gameControllerScript.GameEnded)
+        if (state == State.None && !GameController.singleton.GameEnded)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null && hit.transform.gameObject == this.gameObject)
             {
                 PrintDebugMsg("Hit a GridSPot.");
 
-                if (gameControllerScript.XTurn == true) XClaimed();
+                if (GameController.singleton.XTurn == true) XClaimed();
                 else OClaimed();
 
-                gameControllerScript.NextTurn();
+                GameController.singleton.NextTurn();
             }
         }
     }
@@ -127,8 +125,6 @@ public class GridSpot : MonoBehaviour
         xChild = (this.transform.GetChild(0).gameObject.name == "X") ? this.transform.GetChild(0).gameObject : this.transform.GetChild(1).gameObject;
         oChild = (this.transform.GetChild(1).gameObject.name == "O") ? this.transform.GetChild(1).gameObject : this.transform.GetChild(0).gameObject; ;
         Hide();
-
-        gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
     }
     // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
     void FixedUpdate()

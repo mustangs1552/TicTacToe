@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region Static
-
+    public static UIController singleton = null;
     #endregion
 
     #region Public
@@ -23,8 +23,6 @@ public class UIController : MonoBehaviour
     private Text currTurnText = null;
     private Text winnerText = null;
     private GameObject restartButton = null;
-
-    private GameController gameControllerScript = null;
     #endregion
     #endregion
 
@@ -37,11 +35,11 @@ public class UIController : MonoBehaviour
     // Updates the text objects that the text objects need to display.
     public void UpdateText()
     {
-        string turnStr = (gameControllerScript.XTurn) ? "X" : "O";
+        string turnStr = (GameController.singleton.XTurn) ? "X" : "O";
         currTurnText.text = turnStr + "'s turn.";
-        if (gameControllerScript.GameEnded)
+        if (GameController.singleton.GameEnded)
         {
-            string winnerStr = (gameControllerScript.XTurn) ? "O" : "X";
+            string winnerStr = (GameController.singleton.XTurn) ? "O" : "X";
             winnerText.text = winnerStr + " won!";
             winnerText.gameObject.SetActive(true);
             restartButton.SetActive(true);
@@ -109,12 +107,13 @@ public class UIController : MonoBehaviour
     void Awake()
     {
         PrintDebugMsg("Loaded.");
+
+        if (UIController.singleton != null) PrintErrorDebugMsg("There is already a UIController singlton!");
+        else singleton = this;
     }
     // Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
     void Start()
     {
-        gameControllerScript = GameObject.Find("GameController").GetComponent<GameController>();
-
         AssignUIObjects();
         winnerText.gameObject.SetActive(false);
         restartButton.SetActive(false);

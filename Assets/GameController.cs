@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     #endregion
 
     #region Static
-
+    public static GameController singleton = null;
     #endregion
 
     #region Public
@@ -28,8 +28,6 @@ public class GameController : MonoBehaviour
     private float gridSpotSpacing = 2;
     private bool gameEnded = false;
     private int turnNum = 0;
-
-    private UIController uiControllerScript = null;
     #endregion
     #endregion
 
@@ -44,14 +42,14 @@ public class GameController : MonoBehaviour
     {
         xTurn = (xTurn) ? false : true;
 
-        uiControllerScript.UpdateText();
+        UIController.singleton.UpdateText();
         CheckWinConditions();
 
         turnNum++;
         if(turnNum >= 9)
         {
             gameEnded = true;
-            uiControllerScript.ShowLooseScreen();
+            UIController.singleton.ShowLooseScreen();
         }
     }
 
@@ -178,7 +176,7 @@ public class GameController : MonoBehaviour
     {
         string winnerStr = (winner == State.X) ? "X" : "O";
         PrintDebugMsg(winnerStr + " won!");
-        uiControllerScript.UpdateText();
+        UIController.singleton.UpdateText();
         gameEnded = true;
     }
     #endregion
@@ -225,12 +223,13 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         PrintDebugMsg("Loaded.");
+
+        if (GameController.singleton != null) PrintErrorDebugMsg("There is already a GameController singlton!");
+        else singleton = this;
     }
     // Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
     void Start()
     {
-        uiControllerScript = GameObject.Find("Canvas").GetComponent<UIController>();
-
         if (gridSpot == null) PrintErrorDebugMsg("No GridSpot set!");
         SetUpGrid();
         xTurn = xStarts;
